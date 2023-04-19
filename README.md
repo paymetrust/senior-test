@@ -33,7 +33,7 @@ Clean code ou Hexagonal architecture
 * Écrire un script d'installation pour l'application et fournir une documentation technique complète.
 
 ### Bon à savoir
-* Nous évaluerons votre code en fonction des critères suivants:
+Nous évaluerons votre code en fonction des critères suivants:
 * Respect de l'architecture Hexagonal.
 * Qualité du code et respect des meilleures pratiques de développement.
 * Qualité et pertinence des tests unitaires et intégrés.
