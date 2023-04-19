@@ -5,7 +5,7 @@ E-ticket, est une application de réservation de tickets en ligne. Vous devez me
 Les langages qui doivent être utilisés sont, PHP, TypeScript ou Java, en ce qui concerne le framework, vous avez libre choix.
 
 ## Architecture
-Clean code or Hexagonal architecture
+Clean code ou Hexagonal architecture
 
 ## Base de données
 - PostgreSQL
