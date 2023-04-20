@@ -2,6 +2,7 @@
 
 namespace Domain\Users\Entity;
 
+use DateTime;
 use DateTimeInterface;
 
 class Users{
@@ -10,9 +11,9 @@ class Users{
     public string $email ;
     public string $password;
     public string $uuid;
-    public DateTimeInterface $createdAt;
+    public DateTime $createdAt;
 
-    public function __construct(string $nom,string $email,string $password,?DateTimeInterface $createdAt,?string $uuid=null)
+    public function __construct(string $nom,string $email,string $password,?DateTime $createdAt,?string $uuid=null)
     {
         $this->nom = $nom;
         $this->email = $email;
