@@ -40,9 +40,9 @@ class PdoUsersRepository implements IUsersRepository{
 
     public function findOne(string $uuid): ?Users
     {
-        $query = $this->('
-        SELECT u.* FROM users u
-        ')
+        $query = $this->pdo->prepare('
+        SELECT u.* FROM users u WHERE 
+        ');
     }
 
 
