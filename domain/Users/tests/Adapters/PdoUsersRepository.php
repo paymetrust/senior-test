@@ -32,7 +32,7 @@ class PdoUsersRepository implements IUsersRepository{
                         ['nom' => $user->nom,
                          'email' => $user->email,
                          'password' => $user->password, 
-                         'createdAt' => $user->createdAt ? $user->createdAt:null,
+                         'createdAt' => $user->createdAt ? $user->createdAt : null,
                          'uuid' => $user->uuid]
 
         );
@@ -41,8 +41,21 @@ class PdoUsersRepository implements IUsersRepository{
     public function findOne(string $uuid): ?Users
     {
         $query = $this->pdo->prepare('
-        SELECT u.* FROM users u WHERE 
+         SELECT u.*  FROM users u WHERE u.uuid = uuid
         ');
+
+        $query->execute([
+            'uuid'=>$uuid
+        ]);
+
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+
+        if(!$result){
+           $result = null;
+        }
+        $user = new Users($result['nom'],$result['email'],$result['password'],$result['createdAt']? new $result['createdAt']:null,$result['uuid']);
+
+        return $user;
     }
 
 
