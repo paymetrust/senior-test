@@ -37,4 +37,5 @@ return array(
     'Clue\\React\\Utf8\\' => array($vendorDir . '/clue/utf8-react/src'),
     'Clue\\React\\Term\\' => array($vendorDir . '/clue/term-react/src'),
     'Clue\\React\\Stdio\\' => array($vendorDir . '/clue/stdio-react/src'),
+    'Assert\\' => array($vendorDir . '/beberlei/assert/lib/Assert'),
 );
