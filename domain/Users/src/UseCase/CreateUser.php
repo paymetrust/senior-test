@@ -1,8 +1,14 @@
 <?php
 namespace Domain\Users\UseCase;
 
+use Assert\LazyAssertionException;
+use DateTimeInterface;
 use Domain\Users\Entity\Users;
+use Domain\Users\Exception\InvalidUserDataException;
 use Domain\Users\Port\IUsersRepository;
+
+use function Assert\lazy;
+
 //use Domain\Users\Tests\Adapters\InMemoryUsersRepository;
 
 class CreateUser{
@@ -21,6 +27,7 @@ class CreateUser{
           $userData['password'] ?? '',
           $userData['createdAt'] ?? null
         );
+        //dd($user);
        try{
            $this->validate($user);
            $this->userRepository->save($user);

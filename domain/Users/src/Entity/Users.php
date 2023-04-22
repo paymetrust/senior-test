@@ -15,11 +15,10 @@ class Users{
 
     public function __construct(string $nom,string $email,string $password,?DateTimeInterface $createdAt,?string $uuid=null)
     {
-        $date = date("Y-m-d H:i:s");
         $this->nom = $nom;
         $this->email = $email;
         $this->password = $password;
-        $this->createdAt = new DateTime($date);
+        $this->createdAt = $createdAt;
         $this->uuid = $uuid ?? uniqid();
         
     }
