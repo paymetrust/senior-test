@@ -34,6 +34,33 @@ class PdoUsersRepository implements IUsersRepository{
                           ]);
     }
 
+    public function connect(string $email, string $password): ?Users
+    {
+        $sql ='SELECT u.*  FROM users u WHERE u.email = :email AND password = :password LIMIT 0,1';
+        $query = $this->pdo->prepare($sql);
+
+        $query->execute([
+            'email' => $email,
+            'password' => Md5($password),
+        ]);
+
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+
+        if(!$result){
+           return null;
+        }
+        //dd($result);
+        //dd($result['createdAt']);
+        //$date = date('Y-m-d H:i:s');
+        $user = new Users($result['nom'],
+                          $result['email'],
+                          $result['password'],
+                          $result['createdAt']? new DateTime($result['createdAt']):null,
+                          $result['uuid']);
+
+        return $user;
+    }
+   
     public function findOne(string $uuid): ?Users
     {
         $sql ='SELECT u.*  FROM users u WHERE u.uuid = :uuid';
@@ -46,7 +73,7 @@ class PdoUsersRepository implements IUsersRepository{
         $result = $query->fetch(PDO::FETCH_ASSOC);
 
         if(!$result){
-           $result = null;
+           return null;
         }
         //dd($result);
         //$date = date('Y-m-d H:i:s');
@@ -56,7 +83,7 @@ class PdoUsersRepository implements IUsersRepository{
                           $result['createdAt']? new DateTime($result['createdAt']):null,
                           $result['uuid']);
 
-        return $user;
+        return $user ;
     }
 
 

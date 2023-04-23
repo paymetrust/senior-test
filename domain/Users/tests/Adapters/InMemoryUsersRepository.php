@@ -18,4 +18,8 @@ class InMemoryUsersRepository implements IUsersRepository{
      return $this->users[$uuid] ?? null;
 
    }
+   public function connect(string $email, string $password):?Users
+   {
+    return $this->users ?? null;;
+   }
 }

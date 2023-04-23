@@ -15,29 +15,31 @@ class CreateUser{
 
    protected IUsersRepository $userRepository;
 
-   public function __construct(IUsersRepository $repository)
-   {
+  public function __construct(IUsersRepository $repository)
+  {
      $this->userRepository = $repository;
-   }
+  }
 
-    public function execute(array $userData) :?Users{
-        $user = new Users(
-          $userData['nom'] ?? '',
-          $userData['email'] ?? '',
-          $userData['password'] ?? '',
-          $userData['createdAt'] ?? null
-        );
-        //dd($user);
-       try{
-           $this->validate($user);
-           $this->userRepository->save($user);
-           return $user;
-       }catch(LazyAssertionException $e){
-           throw new InvalidUserDataException($e->getMessage());
-       }
-        
+  public function execute(array $userData) :?Users
+  {
+    $user = new Users(
+      $userData['nom'] ?? '',
+      $userData['email'] ?? '',
+      $userData['password'] ?? '',
+      $userData['createdAt'] ?? null
+    );
+    //dd($user);
+    try{
+        $this->validate($user);
+        $this->userRepository->save($user);
+        return $user;
+    }catch(LazyAssertionException $e){
+        throw new InvalidUserDataException($e->getMessage());
     }
-  protected function validate(Users $user){
+        
+ }
+ 
+    protected function validate(Users $user){
     lazy()->that($user->nom)->notBlank()->minLength(3)
           ->that($user->email)->notBlank()
           ->that($user->createdAt)->nullOr()->isInstanceOf(DateTimeInterface::class)

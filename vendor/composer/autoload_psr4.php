@@ -32,6 +32,8 @@ return array(
     'Joli\\JoliNotif\\' => array($vendorDir . '/jolicode/jolinotif/src'),
     'Domain\\Users\\Tests\\' => array($baseDir . '/domain/Users/tests'),
     'Domain\\Users\\' => array($baseDir . '/domain/Users/src'),
+    'Domain\\Events\\Tests\\' => array($baseDir . '/domain/Events/tests'),
+    'Domain\\Events\\' => array($baseDir . '/domain/Events/src'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'Clue\\React\\Utf8\\' => array($vendorDir . '/clue/utf8-react/src'),

@@ -6,12 +6,14 @@
   },
   "autoload": {
     "psr-4": {
-      "Domain\\Users\\": "domain/Users/src/"
+      "Domain\\Users\\": "domain/Users/src/",
+      "Domain\\Events\\": "domain/Events/src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Domain\\Users\\Tests\\": "domain/Users/tests/"
+      "Domain\\Users\\Tests\\": "domain/Users/tests/",
+      "Domain\\Events\\Tests\\": "domain/Events/tests/"
     }
   },
   "config": {

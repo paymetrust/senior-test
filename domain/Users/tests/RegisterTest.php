@@ -34,3 +34,4 @@ test("Lance une InvalidUserDataException si on a des mauvaises données transmis
 })->with([
     [['nom' => 'Amani Eric','createdAt' => new DateTime(date('Y-m-d H:i:s'))]],
 ])->throws(InvalidUserDataException::class);
+
