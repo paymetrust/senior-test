@@ -80,7 +80,7 @@ class PdoEventsRepository implements IEventsRepository{
    
     public function findSearchEvent(string $ville, DateTimeInterface $edate): ?Events
     {
-         $sql ='SELECT e.*  FROM events e WHERE e.ville = :ville AND e.edate = :edate LIMIT 0,1';
+         $sql ='SELECT e.*  FROM events e WHERE e.ville = :ville AND e.edate = :edate';
          //dd($sql);
         $query = $this->pdo->prepare($sql);
         //dd($edate);
