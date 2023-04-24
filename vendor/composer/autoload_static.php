@@ -74,6 +74,8 @@ class ComposerStaticInit6863fc713aecec9c91f2f23fc6a165d1
             'Domain\\Users\\' => 13,
             'Domain\\Events\\Tests\\' => 20,
             'Domain\\Events\\' => 14,
+            'Domain\\Booking\\Tests\\' => 21,
+            'Domain\\Booking\\' => 15,
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
         ),
@@ -201,6 +203,14 @@ class ComposerStaticInit6863fc713aecec9c91f2f23fc6a165d1
         'Domain\\Events\\' => 
         array (
             0 => __DIR__ . '/../..' . '/domain/Events/src',
+        ),
+        'Domain\\Booking\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/domain/Booking/tests',
+        ),
+        'Domain\\Booking\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/domain/Booking/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (

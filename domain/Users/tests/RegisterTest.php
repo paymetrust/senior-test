@@ -9,7 +9,7 @@ use Domain\Users\UseCase\CreateUser;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertInstanceOf;
 
-test("Enregistrement d'un User ",function(){
+test("Enregistrement d'un utilisateur ",function(){
 
     $repository = new PdoUsersRepository;
     $useCase = new CreateUser($repository);

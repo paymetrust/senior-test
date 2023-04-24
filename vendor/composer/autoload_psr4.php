@@ -34,6 +34,8 @@ return array(
     'Domain\\Users\\' => array($baseDir . '/domain/Users/src'),
     'Domain\\Events\\Tests\\' => array($baseDir . '/domain/Events/tests'),
     'Domain\\Events\\' => array($baseDir . '/domain/Events/src'),
+    'Domain\\Booking\\Tests\\' => array($baseDir . '/domain/Booking/tests'),
+    'Domain\\Booking\\' => array($baseDir . '/domain/Booking/src'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'Clue\\React\\Utf8\\' => array($vendorDir . '/clue/utf8-react/src'),

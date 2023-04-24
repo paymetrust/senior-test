@@ -7,13 +7,15 @@
   "autoload": {
     "psr-4": {
       "Domain\\Users\\": "domain/Users/src/",
-      "Domain\\Events\\": "domain/Events/src/"
+      "Domain\\Events\\": "domain/Events/src/",
+      "Domain\\Booking\\": "domain/Booking/src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
       "Domain\\Users\\Tests\\": "domain/Users/tests/",
-      "Domain\\Events\\Tests\\": "domain/Events/tests/"
+      "Domain\\Events\\Tests\\": "domain/Events/tests/",
+      "Domain\\Booking\\Tests\\": "domain/Booking/tests/"
     }
   },
   "config": {
