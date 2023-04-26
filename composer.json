@@ -8,7 +8,8 @@
     "psr-4": {
       "Domain\\Users\\": "domain/Users/src/",
       "Domain\\Events\\": "domain/Events/src/",
-      "Domain\\Booking\\": "domain/Booking/src/"
+      "Domain\\Booking\\": "domain/Booking/src/",
+      "Infrastructures\\Pdo\\": "infrastructures/Pdo/"
     }
   },
   "autoload-dev": {
@@ -25,6 +26,7 @@
   },
   "require": {
     "beberlei/assert": "^3.3",
-    "zircote/swagger-php": "^4.7"
+    "zircote/swagger-php": "^4.7",
+    "doctrine/annotations": "^2.0"
   }
 }

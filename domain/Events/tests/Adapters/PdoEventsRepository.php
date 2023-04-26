@@ -6,7 +6,7 @@ use DateTimeInterface;
 use Domain\Events\Entity\Events;
 use Domain\Events\Entity\Users;
 use Domain\Events\Port\IEventsRepository;
-
+use Infrastructures\Pdo\DataBase;
 use PDO;
 use PHPUnit\Framework\Constraint\IsInstanceOf;
 
@@ -16,9 +16,14 @@ class PdoEventsRepository implements IEventsRepository{
 
     public function __construct()
     {
+        /*
         $this->pdo = new PDO('mysql:host=localhost;dbname=PostgreSQLdb;charset=utf8;','quitus','admin',[
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ]);
+        */
+
+        $db = new DataBase();
+        $this->pdo = $db->getConnexion();
         
     }
 

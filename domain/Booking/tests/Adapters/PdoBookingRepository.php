@@ -8,6 +8,7 @@ use Domain\Booking\Entity\Booking;
 use Domain\Booking\Port\IBookingRepository;
 use Domain\Events\Tests\Adapters\PdoEventsRepository;
 use Domain\Users\Tests\Adapters\PdoUsersRepository;
+use Infrastructures\Pdo\DataBase;
 use PDO;
 use PHPUnit\Framework\Constraint\IsInstanceOf;
 
@@ -17,9 +18,13 @@ class PdoBookingRepository implements IBookingRepository{
 
     public function __construct()
     {
+        /*
         $this->pdo = new PDO('mysql:host=localhost;dbname=PostgreSQLdb;charset=utf8;','quitus','admin',[
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ]);
+        */
+        $db = new DataBase();
+        $this->pdo= $db->getConnexion();
         
     }
 

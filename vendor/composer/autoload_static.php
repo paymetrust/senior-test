@@ -73,6 +73,10 @@ class ComposerStaticInit6863fc713aecec9c91f2f23fc6a165d1
         array (
             'Joli\\JoliNotif\\' => 15,
         ),
+        'I' => 
+        array (
+            'Infrastructures\\Pdo\\' => 20,
+        ),
         'D' => 
         array (
             'Domain\\Users\\Tests\\' => 19,
@@ -202,6 +206,10 @@ class ComposerStaticInit6863fc713aecec9c91f2f23fc6a165d1
         'Joli\\JoliNotif\\' => 
         array (
             0 => __DIR__ . '/..' . '/jolicode/jolinotif/src',
+        ),
+        'Infrastructures\\Pdo\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/infrastructures/Pdo',
         ),
         'Domain\\Users\\Tests\\' => 
         array (

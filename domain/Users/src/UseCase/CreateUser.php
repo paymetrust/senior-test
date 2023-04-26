@@ -9,8 +9,6 @@ use Domain\Users\Port\IUsersRepository;
 
 use function Assert\lazy;
 
-//use Domain\Users\Tests\Adapters\InMemoryUsersRepository;
-
 class CreateUser{
 
    protected IUsersRepository $userRepository;

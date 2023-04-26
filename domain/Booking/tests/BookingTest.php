@@ -38,4 +38,5 @@ test("Reservation d'un ticket ",function(){
     //dd($booking,$repository->findOneBooking($event->uuid));
     assertInstanceOf(Booking::class,$booking);
     assertEquals($booking,$repository->findOneBooking($booking->uuid));
+    
 });

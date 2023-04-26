@@ -4,6 +4,7 @@ namespace Domain\Users\Tests\Adapters;
 use DateTime;
 use Domain\Users\Entity\Users;
 use Domain\Users\Port\IUsersRepository;
+use Infrastructures\Pdo\DataBase;
 use PDO;
 
 class PdoUsersRepository implements IUsersRepository{
@@ -12,9 +13,14 @@ class PdoUsersRepository implements IUsersRepository{
 
     public function __construct()
     {
+        /*
         $this->pdo = new PDO('mysql:host=localhost;dbname=PostgreSQLdb;charset=utf8;','quitus','admin',[
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ]);
+
+        */
+        $db = new DataBase();
+        $this->pdo = $db->getConnexion();
         
     }
 

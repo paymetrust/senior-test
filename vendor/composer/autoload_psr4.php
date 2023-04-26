@@ -32,6 +32,7 @@ return array(
     'OpenApi\\' => array($vendorDir . '/zircote/swagger-php/src'),
     'NunoMaduro\\Collision\\' => array($vendorDir . '/nunomaduro/collision/src'),
     'Joli\\JoliNotif\\' => array($vendorDir . '/jolicode/jolinotif/src'),
+    'Infrastructures\\Pdo\\' => array($baseDir . '/infrastructures/Pdo'),
     'Domain\\Users\\Tests\\' => array($baseDir . '/domain/Users/tests'),
     'Domain\\Users\\' => array($baseDir . '/domain/Users/src'),
     'Domain\\Events\\Tests\\' => array($baseDir . '/domain/Events/tests'),
