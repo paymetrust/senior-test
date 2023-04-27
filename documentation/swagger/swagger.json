@@ -1,0 +1,204 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/confirmationBooking/{uuid}": {
+            "post": {
+                "operationId": "0814bdfcca1026a72c509b4d9361b759",
+                "responses": {
+                    "200": {
+                        "description": "Confirmation d'une réservation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Booking"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/createBooking/{user}/{event}/{nombreTicket}/{email}": {
+            "post": {
+                "operationId": "05b32a8632b3128006d28a6dc4f8b9ab",
+                "responses": {
+                    "200": {
+                        "description": "Création d'une réservation de ticket",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Booking"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/CreateEvent/{name}/{edate}/{etime}/{ville}/{emplacement}/{prix}": {
+            "post": {
+                "operationId": "78c271613992a19acc24b9991e9a184f",
+                "responses": {
+                    "200": {
+                        "description": "Connexion de l'utilisateurr avec succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Events"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/CreateEvent/{ville}/{edate}": {
+            "get": {
+                "operationId": "a5634805b0a0e92bd9c715ef996182c2",
+                "responses": {
+                    "200": {
+                        "description": "Recherche d'un évèvement a partir de la ville et la date",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Events"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/createUser/{nom}/{email}/{password}/{createdAt}": {
+            "post": {
+                "operationId": "a204a8e1aa4bc1e2377c89ac79824efc",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "le de parametre a recuperer",
+                        "required": true,
+                        "schema": {}
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Création d'un utilisateur avec succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Users"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/loginUser/{email}/{password}": {
+            "get": {
+                "operationId": "f6fd790f867de0952288018fbc410d4c",
+                "responses": {
+                    "200": {
+                        "description": "Connexion de l'utilisateurr avec succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Users"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Booking": {
+                "properties": {
+                    "user": {
+                        "type": "string"
+                    },
+                    "event": {
+                        "type": "string"
+                    },
+                    "nombreTicket": {
+                        "type": "integer"
+                    },
+                    "fullName": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "confirmation": {
+                        "type": "integer"
+                    },
+                    "uuid": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Events": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "edate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "etime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "emplacement": {
+                        "type": "string"
+                    },
+                    "ville": {
+                        "type": "string"
+                    },
+                    "prix": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "uuid": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Users": {
+                "properties": {
+                    "nom": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "uuid": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

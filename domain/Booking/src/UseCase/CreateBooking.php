@@ -11,6 +11,7 @@ use Domain\Events\Tests\Adapters\PdoEventsRepository;
 use Domain\Users\Tests\Adapters\PdoUsersRepository;
 
 use function Assert\lazy;
+use OpenApi\Annotations as OA;
 
 //use Domain\Users\Tests\Adapters\InMemoryUsersRepository;
 
@@ -22,7 +23,16 @@ class CreateBooking{
   {
      $this->bookingRepository = $repository;
   }
-
+/**
+ * @OA\POST(
+ *     path="/createBooking/{user}/{event}/{nombreTicket}/{email}",
+ *   @OA\Response(
+ *          response="200",
+ *        description="Création d'une réservation de ticket",
+ *        @OA\JsonContent(ref="#/components/schemas/Booking"),
+ *    )
+ * )
+ */
   public function execute(array $bookingData) :?Booking
   {
    //dd($bookingData);

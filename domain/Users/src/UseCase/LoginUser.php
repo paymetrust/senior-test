@@ -8,6 +8,7 @@ use Domain\Users\Exception\InvalidUserDataException;
 use Domain\Users\Port\IUsersRepository;
 
 use function Assert\lazy;
+use OpenApi\Annotations as OA;
 
 //use Domain\Users\Tests\Adapters\InMemoryUsersRepository;
 
@@ -20,6 +21,16 @@ class LoginUser{
      $this->userRepository = $repository;
   }
 
+/**
+ * @OA\GET(
+ *     path="/loginUser/{email}/{password}",
+ *   @OA\Response(
+ *          response="200",
+ *        description="Connexion de l'utilisateurr avec succès",
+ *        @OA\JsonContent(ref="#/components/schemas/Users"),
+ *    )
+ * )
+ */
   public function execute(array $userData) :?Users
   {
         $email = $userData['email'];

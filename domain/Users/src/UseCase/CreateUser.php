@@ -1,13 +1,12 @@
 <?php
 namespace Domain\Users\UseCase;
-
 use Assert\LazyAssertionException;
 use DateTimeInterface;
 use Domain\Users\Entity\Users;
 use Domain\Users\Exception\InvalidUserDataException;
 use Domain\Users\Port\IUsersRepository;
-
 use function Assert\lazy;
+use OpenApi\Annotations as OA;
 
 class CreateUser{
 
@@ -17,7 +16,23 @@ class CreateUser{
   {
      $this->userRepository = $repository;
   }
-
+/**
+ * @OA\POST(
+ *     path="/createUser/{nom}/{email}/{password}/{createdAt}",
+ *     @OA\Parameter(
+ *        name="limit",
+ *        in="query",
+ *        description="le de parametre a recuperer",
+ *        required=true,
+ *        @OA\Schema()   
+ *     ),
+ *   @OA\Response(
+ *          response="200",
+ *        description="Création d'un utilisateur avec succès",
+ *        @OA\JsonContent(ref="#/components/schemas/Users"),
+ *    )
+ * )
+ */
   public function execute(array $userData) :?Users
   {
     $user = new Users(

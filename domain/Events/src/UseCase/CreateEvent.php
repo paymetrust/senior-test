@@ -9,6 +9,7 @@ use Domain\Events\Exception\InvalidEventDataException;
 use Domain\Events\Port\IEventsRepository;
 
 use function Assert\lazy;
+use OpenApi\Annotations as OA;
 
 //use Domain\Users\Tests\Adapters\InMemoryUsersRepository;
 
@@ -20,7 +21,16 @@ class CreateEvent{
   {
      $this->eventRepository = $repository;
   }
-
+/**
+ * @OA\POST(
+ *     path="/CreateEvent/{name}/{edate}/{etime}/{ville}/{emplacement}/{prix}",
+ *   @OA\Response(
+ *          response="200",
+ *        description="Connexion de l'utilisateurr avec succès",
+ *        @OA\JsonContent(ref="#/components/schemas/Events"),
+ *    )
+ * )
+ */
   public function execute(array $eventData) :?Events
   {
     $event = new Events(

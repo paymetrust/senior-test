@@ -9,6 +9,7 @@ use Domain\Booking\Port\IBookingRepository;
 use Domain\Booking\Tests\Adapters\PdoBookingRepository;
 
 use function Assert\lazy;
+use OpenApi\Annotations as OA;
 
 //use Domain\Users\Tests\Adapters\InMemoryUsersRepository;
 
@@ -20,7 +21,16 @@ class ConfirmBooking{
   {
      $this->bookingRepository = $repository;
   }
-
+/**
+ * @OA\POST(
+ *     path="/confirmationBooking/{uuid}",
+ *   @OA\Response(
+ *          response="200",
+ *        description="Confirmation d'une réservation",
+ *        @OA\JsonContent(ref="#/components/schemas/Booking"),
+ *    )
+ * )
+ */
   public function execute(array $bookingData) :?Booking
   {
        

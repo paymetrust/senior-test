@@ -8,6 +8,7 @@ use Domain\Users\Exception\InvalidUserDataException;
 use Domain\Events\Port\IEventsRepository;
 
 use function Assert\lazy;
+use OpenApi\Annotations as OA;
 
 //use Domain\Users\Tests\Adapters\InMemoryUsersRepository;
 
@@ -19,7 +20,16 @@ class SearchEvent{
   {
      $this->eventRepository = $repository;
   }
-
+/**
+ * @OA\GET(
+ *     path="/CreateEvent/{ville}/{edate}",
+ *   @OA\Response(
+ *          response="200",
+ *        description="Recherche d'un évèvement a partir de la ville et la date",
+ *        @OA\JsonContent(ref="#/components/schemas/Events"),
+ *    )
+ * )
+ */
   public function execute(array $eventData) :?Events
   {
         $ville = $eventData['ville'];
