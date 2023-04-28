@@ -9,10 +9,6 @@ use Domain\Events\Port\IEventsRepository;
 
 use function Assert\lazy;
 use OpenApi\Annotations as OA;
-/**
- * @OA\Info(title="E-Ticket API", version="1.0")
- */
-
 
 class SearchEvent{
 
@@ -22,32 +18,25 @@ class SearchEvent{
   {
      $this->eventRepository = $repository;
   }
-  /*- in: query
-  name: offset
-  schema:
-    type: integer
-    default: 0
-  description: The number of items to skip before starting to collect the result set
-- in: query
-  name: limit
-  schema:
-    type: integer
-    default: 100
-  description: The numbers of items to return
-  */
 /**
- * @OA\GET(
- *     path="/infrastructures/Api/Events/searchEvent.php?ville={ville}&date={edate}",
+ * @OA\POST(
+ *     path="/infrastructures/Api/Events/searchEvent.php",
  *    tags={"Evenements"},
  *     summary="La création d'un évènement",
- *   @OA\Parameter(
- *       name="ville",
- *       description="La ville qui abrite l'évènement",
- *       required=true,
- *       in="query",
- *       @OA\Schema(
- *         type="string"
- *      )
+ *     @OA\RequestBody(
+ *       @OA\MediaType(
+ *          mediaType="multipart/form-data",
+ *          @OA\Schema(
+ *            @OA\Property(
+ *              property="ville",
+ *              type="string",
+ *            ), 
+ *            @OA\Property(
+ *              property="edate",
+ *              type="string",
+ *            ),
+ *       ),  
+ *      ),
  *    ),
  *   @OA\Response(
  *          response="200",

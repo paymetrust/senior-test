@@ -7,7 +7,10 @@ use Domain\Users\Exception\InvalidUserDataException;
 use Domain\Users\Port\IUsersRepository;
 use function Assert\lazy;
 use OpenApi\Annotations as OA;
-
+/**
+ * @OA\Info(title="API E-Ticket", version="1.0.0"),
+ * @OA\Server(url="http://api-e-ticke.ci",description="L'url du serveur ...r"),
+ */
 class CreateUser{
 
    protected IUsersRepository $userRepository;

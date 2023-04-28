@@ -23,8 +23,21 @@ class ConfirmBooking{
   }
 /**
  * @OA\POST(
- *     path="/confirmationBooking",
+ *     path="/infrastructures/Api/Booking/confirmBooking.php",
  *    tags={"Réservation"},
+ *     summary="La Confirmation d'une réservation",
+ *     @OA\RequestBody(
+ *       @OA\MediaType(
+ *          mediaType="multipart/form-data",
+ *          @OA\Schema(
+ *            @OA\Property(
+ *              property="uuid",
+ *              type="string",
+ *              description="la référence de la réservation",
+ *            ),
+ *       ),  
+ *      ),
+ *    ),
  *   @OA\Response(
  *          response="200",
  *        description="Confirmation d'une réservation",

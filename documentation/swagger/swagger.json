@@ -1,16 +1,38 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "E-Ticket API",
-        "version": "1.0"
+        "title": "API E-Ticket",
+        "version": "1.0.0"
     },
+    "servers": [
+        {
+            "url": "http://api-e-ticke.ci",
+            "description": "L'url du serveur ...r"
+        }
+    ],
     "paths": {
-        "/confirmationBooking": {
+        "/infrastructures/Api/Booking/confirmBooking.php": {
             "post": {
                 "tags": [
                     "Réservation"
                 ],
-                "operationId": "a700cfe5e30e5057e2f992c56cdd75f6",
+                "summary": "La Confirmation d'une réservation",
+                "operationId": "38f739b9898c7f0e4ce93e967f61a8bb",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "uuid": {
+                                        "description": "la référence de la réservation",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Confirmation d'une réservation",
@@ -25,12 +47,39 @@
                 }
             }
         },
-        "/createBooking": {
+        "/infrastructures/Api/Booking/createBooking.php": {
             "post": {
                 "tags": [
                     "Réservation"
                 ],
-                "operationId": "08d7e2f88e98d683fe387a1a1e604cd3",
+                "summary": "La création d'une réservation",
+                "operationId": "6c579451e44577fd4c6ba5747ae14eb1",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "user": {
+                                        "type": "string"
+                                    },
+                                    "event": {
+                                        "type": "string"
+                                    },
+                                    "nombreTicket": {
+                                        "type": "integer"
+                                    },
+                                    "fullName": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Création d'une réservation de ticket",
@@ -96,24 +145,30 @@
                 }
             }
         },
-        "/infrastructures/Api/Events/searchEvent.php?ville={ville}&date={edate}": {
-            "get": {
+        "/infrastructures/Api/Events/searchEvent.php": {
+            "post": {
                 "tags": [
                     "Evenements"
                 ],
                 "summary": "La création d'un évènement",
-                "operationId": "310d0d9a39347760743df7e4847e997f",
-                "parameters": [
-                    {
-                        "name": "ville",
-                        "in": "query",
-                        "description": "La ville qui abrite l'évènement",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                "operationId": "1a824329dd1a12c0d99fab3d6c3dc50a",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "ville": {
+                                        "type": "string"
+                                    },
+                                    "edate": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "200": {
                         "description": "Recherche d'un évèvement a partir de la ville et la date",

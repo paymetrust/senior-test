@@ -25,8 +25,36 @@ class CreateBooking{
   }
 /**
  * @OA\POST(
- *     path="/createBooking",
+ *     path="/infrastructures/Api/Booking/createBooking.php",
  *    tags={"Réservation"},
+ *     summary="La création d'une réservation",
+ *     @OA\RequestBody(
+ *       @OA\MediaType(
+ *          mediaType="multipart/form-data",
+ *          @OA\Schema(
+ *            @OA\Property(
+ *              property="user",
+ *              type="string",
+ *            ), 
+ *            @OA\Property(
+ *              property="event",
+ *              type="string",
+ *            ), 
+ *            @OA\Property(
+ *              property="nombreTicket",
+ *              type="integer",
+ *            ), 
+ *            @OA\Property(
+ *              property="fullName",
+ *              type="string",
+ *            ), 
+ *            @OA\Property(
+ *              property="email",
+ *              type="string",
+ *            ), 
+ *       ),  
+ *      ),
+ *    ),
  *   @OA\Response(
  *          response="200",
  *        description="Création d'une réservation de ticket",

@@ -11,8 +11,6 @@ use Domain\Events\Port\IEventsRepository;
 use function Assert\lazy;
 use OpenApi\Annotations as OA;
 
-//use Domain\Users\Tests\Adapters\InMemoryUsersRepository;
-
 class CreateEvent{
 
    protected IEventsRepository $eventRepository;

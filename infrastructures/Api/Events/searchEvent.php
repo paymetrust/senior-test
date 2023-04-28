@@ -19,10 +19,7 @@ $repository = new PdoEventsRepository;
 $useCase = new SearchEvent($repository);
 
 
-
-var_dump($_GET);
-
-die();    
+  
 /*$arrData = [
 
     'name' => 'Femua tour 2023',
@@ -37,18 +34,12 @@ die();
 $date = date('Y-m-d');
 $time = date('H:i');
 $arrData = [
-    'ville' => $_POST['name'],
+    'ville' => $_POST['ville'],
     'edate' => new DateTime($_POST['edate']),
 ];
 $event = $repository->findSearchEvent($arrData['ville'],$arrData['edate']);
 if($event){
-    echo json_encode(
-        array(
-            "type" => "succes",
-            "titre" => "Enregistrement d'un évènement",
-            "message" => "évènement enregistré avec succès"
-        )
-    );
+    echo json_encode($event);
 }else{
         echo json_encode(
         array(

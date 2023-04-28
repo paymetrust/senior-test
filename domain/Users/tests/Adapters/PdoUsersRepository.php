@@ -26,7 +26,7 @@ class PdoUsersRepository implements IUsersRepository{
 
     public function save(Users $user)
     {
-        dd($user);
+       // dd($user);
         $sql ='INSERT INTO users SET nom = :nom, email = :email, password = :password, createdAt = :createdAt,uuid = :uuid';
         $query = $this->pdo->prepare($sql);
 
