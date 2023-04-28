@@ -8,7 +8,8 @@ use Domain\Users\Port\IUsersRepository;
 use function Assert\lazy;
 use OpenApi\Annotations as OA;
 /**
- * @OA\Info(title="API E-Ticket", version="1.0.0"),
+ * @OA\Info(title="API E-Ticket", version="1.0.0",
+ *       contact="07 89 91 91 99"),
  * @OA\Server(url="http://api-e-ticke.ci",description="L'url du serveur ...r"),
  */
 class CreateUser{
@@ -31,14 +32,17 @@ class CreateUser{
  *            @OA\Property(
  *              property="nom",
  *              type="string",
+ *              description="le nom de l'utilisateur"
  *            ), 
  *            @OA\Property(
  *              property="email",
  *              type="string",
+ *              description="le mail de l'utilisateur"
  *            ), 
  *            @OA\Property(
  *              property="password",
  *              type="string",
+ *              description="le not de placce "
  *            ), 
  *       ),  
  *      ),

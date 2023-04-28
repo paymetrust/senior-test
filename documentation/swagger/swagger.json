@@ -2,6 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "API E-Ticket",
+        "contact": "07 89 91 91 99",
         "version": "1.0.0"
     },
     "servers": [
@@ -107,21 +108,27 @@
                             "schema": {
                                 "properties": {
                                     "name": {
+                                        "description": "le nom de l'évenement",
                                         "type": "string"
                                     },
                                     "edate": {
+                                        "description": "la date de l'évenement",
                                         "type": "string"
                                     },
                                     "etime": {
+                                        "description": "l'heure de l'évenement",
                                         "type": "string"
                                     },
                                     "ville": {
+                                        "description": "la ville  de l'évenement",
                                         "type": "string"
                                     },
                                     "emplacement": {
+                                        "description": "l'emplacement de l'évenement",
                                         "type": "string"
                                     },
                                     "prix": {
+                                        "description": "le prix de l'évenement",
                                         "type": "number",
                                         "format": "float"
                                     }
@@ -150,7 +157,7 @@
                 "tags": [
                     "Evenements"
                 ],
-                "summary": "La création d'un évènement",
+                "summary": "La recherche d'un évènement",
                 "operationId": "1a824329dd1a12c0d99fab3d6c3dc50a",
                 "requestBody": {
                     "content": {
@@ -158,9 +165,11 @@
                             "schema": {
                                 "properties": {
                                     "ville": {
+                                        "description": "La ville à rechercher",
                                         "type": "string"
                                     },
                                     "edate": {
+                                        "description": "La date à rechercher",
                                         "type": "string"
                                     }
                                 },
@@ -196,12 +205,15 @@
                             "schema": {
                                 "properties": {
                                     "nom": {
+                                        "description": "le nom de l'utilisateur",
                                         "type": "string"
                                     },
                                     "email": {
+                                        "description": "le mail de l'utilisateur",
                                         "type": "string"
                                     },
                                     "password": {
+                                        "description": "le not de placce ",
                                         "type": "string"
                                     }
                                 },
@@ -237,9 +249,11 @@
                             "schema": {
                                 "properties": {
                                     "email": {
+                                        "description": "l'adresse email de l'utilisateur",
                                         "type": "string"
                                     },
                                     "password": {
+                                        "description": "le mot de passe de l'utilisateur",
                                         "type": "string"
                                     }
                                 },

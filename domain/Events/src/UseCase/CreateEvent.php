@@ -31,26 +31,32 @@ class CreateEvent{
  *            @OA\Property(
  *              property="name",
  *              type="string",
+ *              description="le nom de l'évenement"
  *            ), 
  *            @OA\Property(
  *              property="edate",
  *              type="string",
+ *              description="la date de l'évenement"
  *            ), 
  *            @OA\Property(
  *              property="etime",
  *              type="string",
+ *              description="l'heure de l'évenement"
  *            ), 
  *            @OA\Property(
  *              property="ville",
  *              type="string",
+ *              description="la ville  de l'évenement"
  *            ), 
  *            @OA\Property(
  *              property="emplacement",
  *              type="string",
+ *              description="l'emplacement de l'évenement"
  *            ), 
  *            @OA\Property(
  *              property="prix",
  *              type="float",
+ *              description="le prix de l'évenement"
  *            ), 
  *       ),  
  *      ),

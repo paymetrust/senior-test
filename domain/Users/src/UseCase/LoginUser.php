@@ -33,10 +33,12 @@ class LoginUser{
  *            @OA\Property(
  *              property="email",
  *              type="string",
+ *              description="l'adresse email de l'utilisateur"
  *            ), 
  *            @OA\Property(
  *              property="password",
  *              type="string",
+ *              description="le mot de passe de l'utilisateur"
  *            ), 
  *       ),  
  *      ),

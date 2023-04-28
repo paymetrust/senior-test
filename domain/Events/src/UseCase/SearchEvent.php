@@ -22,7 +22,7 @@ class SearchEvent{
  * @OA\POST(
  *     path="/infrastructures/Api/Events/searchEvent.php",
  *    tags={"Evenements"},
- *     summary="La création d'un évènement",
+ *     summary="La recherche d'un évènement",
  *     @OA\RequestBody(
  *       @OA\MediaType(
  *          mediaType="multipart/form-data",
@@ -30,10 +30,13 @@ class SearchEvent{
  *            @OA\Property(
  *              property="ville",
  *              type="string",
+ *              description="La ville à rechercher"
+ * 
  *            ), 
  *            @OA\Property(
  *              property="edate",
  *              type="string",
+ *              description="La date à rechercher"
  *            ),
  *       ),  
  *      ),
