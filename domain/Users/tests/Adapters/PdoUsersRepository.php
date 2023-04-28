@@ -26,7 +26,7 @@ class PdoUsersRepository implements IUsersRepository{
 
     public function save(Users $user)
     {
-        //dd($user);
+        dd($user);
         $sql ='INSERT INTO users SET nom = :nom, email = :email, password = :password, createdAt = :createdAt,uuid = :uuid';
         $query = $this->pdo->prepare($sql);
 
@@ -38,11 +38,13 @@ class PdoUsersRepository implements IUsersRepository{
                           'uuid' => $user->uuid,
                           
                           ]);
+     //echo json_encode(['message'=>'enregistrement fait avec succès']);
     }
 
     public function connect(string $email, string $password): ?Users
     {
         $sql ='SELECT u.*  FROM users u WHERE u.email = :email AND password = :password LIMIT 0,1';
+        //$sql ='SELECT u.*  FROM users u WHERE u.email = :email AND password = :password';
         $query = $this->pdo->prepare($sql);
 
         $query->execute([

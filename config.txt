@@ -1,0 +1,1 @@
+./vendor/bin/openapi --format json --output ./documentation/swagger/swagger.json ./documentation/swagger/swagger.php domain

@@ -18,18 +18,37 @@ class CreateUser{
   }
 /**
  * @OA\POST(
- *     path="/createUser/{nom}/{email}/{password}/{createdAt}",
- *     @OA\Parameter(
- *        name="limit",
- *        in="query",
- *        description="le de parametre a recuperer",
- *        required=true,
- *        @OA\Schema()   
- *     ),
+ *     path="/infrastructures/Api/Users/createUser.php",
+ *     tags={"Utilisateurs"},
+ *     summary="La création d'un utilisateur",
+ *     @OA\RequestBody(
+ *       @OA\MediaType(
+ *          mediaType="multipart/form-data",
+ *          @OA\Schema(
+ *            @OA\Property(
+ *              property="nom",
+ *              type="string",
+ *            ), 
+ *            @OA\Property(
+ *              property="email",
+ *              type="string",
+ *            ), 
+ *            @OA\Property(
+ *              property="password",
+ *              type="string",
+ *            ), 
+ *       ),  
+ *      ),
+ *    ),
  *   @OA\Response(
  *          response="200",
  *        description="Création d'un utilisateur avec succès",
  *        @OA\JsonContent(ref="#/components/schemas/Users"),
+ *    )
+ *     ),
+ *   @OA\Response(
+ *        response="404",
+ *        description="Echec de la creation d'un utilisateur"
  *    )
  * )
  */

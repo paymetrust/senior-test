@@ -23,7 +23,8 @@ class ConfirmBooking{
   }
 /**
  * @OA\POST(
- *     path="/confirmationBooking/{uuid}",
+ *     path="/confirmationBooking",
+ *    tags={"Réservation"},
  *   @OA\Response(
  *          response="200",
  *        description="Confirmation d'une réservation",

@@ -22,8 +22,25 @@ class LoginUser{
   }
 
 /**
- * @OA\GET(
- *     path="/loginUser/{email}/{password}",
+ * @OA\POST(
+ *     path="/infrastructures/Api/Users/loginUser.php",
+ *     summary="se connecter avec l'email et mot de passe",
+ *     tags={"Utilisateurs"},
+ *     @OA\RequestBody(
+ *       @OA\MediaType(
+ *          mediaType="multipart/form-data",
+ *          @OA\Schema(
+ *            @OA\Property(
+ *              property="email",
+ *              type="string",
+ *            ), 
+ *            @OA\Property(
+ *              property="password",
+ *              type="string",
+ *            ), 
+ *       ),  
+ *      ),
+ *    ),
  *   @OA\Response(
  *          response="200",
  *        description="Connexion de l'utilisateurr avec succès",

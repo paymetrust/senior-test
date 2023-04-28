@@ -23,10 +23,43 @@ class CreateEvent{
   }
 /**
  * @OA\POST(
- *     path="/CreateEvent/{name}/{edate}/{etime}/{ville}/{emplacement}/{prix}",
+ *     path="/infrastructures/Api/Events/createEvent.php",
+ *    tags={"Evenements"},
+ *     summary="La création d'un évènement",
+ *     @OA\RequestBody(
+ *       @OA\MediaType(
+ *          mediaType="multipart/form-data",
+ *          @OA\Schema(
+ *            @OA\Property(
+ *              property="name",
+ *              type="string",
+ *            ), 
+ *            @OA\Property(
+ *              property="edate",
+ *              type="string",
+ *            ), 
+ *            @OA\Property(
+ *              property="etime",
+ *              type="string",
+ *            ), 
+ *            @OA\Property(
+ *              property="ville",
+ *              type="string",
+ *            ), 
+ *            @OA\Property(
+ *              property="emplacement",
+ *              type="string",
+ *            ), 
+ *            @OA\Property(
+ *              property="prix",
+ *              type="float",
+ *            ), 
+ *       ),  
+ *      ),
+ *    ),
  *   @OA\Response(
  *          response="200",
- *        description="Connexion de l'utilisateurr avec succès",
+ *        description="Création d'un évènement",
  *        @OA\JsonContent(ref="#/components/schemas/Events"),
  *    )
  * )

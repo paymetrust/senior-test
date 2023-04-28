@@ -1,9 +1,16 @@
 {
     "openapi": "3.0.0",
+    "info": {
+        "title": "E-Ticket API",
+        "version": "1.0"
+    },
     "paths": {
-        "/confirmationBooking/{uuid}": {
+        "/confirmationBooking": {
             "post": {
-                "operationId": "0814bdfcca1026a72c509b4d9361b759",
+                "tags": [
+                    "Réservation"
+                ],
+                "operationId": "a700cfe5e30e5057e2f992c56cdd75f6",
                 "responses": {
                     "200": {
                         "description": "Confirmation d'une réservation",
@@ -18,9 +25,12 @@
                 }
             }
         },
-        "/createBooking/{user}/{event}/{nombreTicket}/{email}": {
+        "/createBooking": {
             "post": {
-                "operationId": "05b32a8632b3128006d28a6dc4f8b9ab",
+                "tags": [
+                    "Réservation"
+                ],
+                "operationId": "08d7e2f88e98d683fe387a1a1e604cd3",
                 "responses": {
                     "200": {
                         "description": "Création d'une réservation de ticket",
@@ -35,12 +45,46 @@
                 }
             }
         },
-        "/CreateEvent/{name}/{edate}/{etime}/{ville}/{emplacement}/{prix}": {
+        "/infrastructures/Api/Events/createEvent.php": {
             "post": {
-                "operationId": "78c271613992a19acc24b9991e9a184f",
+                "tags": [
+                    "Evenements"
+                ],
+                "summary": "La création d'un évènement",
+                "operationId": "7257c6b26358364493b53dc9766ecfc6",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "edate": {
+                                        "type": "string"
+                                    },
+                                    "etime": {
+                                        "type": "string"
+                                    },
+                                    "ville": {
+                                        "type": "string"
+                                    },
+                                    "emplacement": {
+                                        "type": "string"
+                                    },
+                                    "prix": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
-                        "description": "Connexion de l'utilisateurr avec succès",
+                        "description": "Création d'un évènement",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -52,9 +96,24 @@
                 }
             }
         },
-        "/CreateEvent/{ville}/{edate}": {
+        "/infrastructures/Api/Events/searchEvent.php?ville={ville}&date={edate}": {
             "get": {
-                "operationId": "a5634805b0a0e92bd9c715ef996182c2",
+                "tags": [
+                    "Evenements"
+                ],
+                "summary": "La création d'un évènement",
+                "operationId": "310d0d9a39347760743df7e4847e997f",
+                "parameters": [
+                    {
+                        "name": "ville",
+                        "in": "query",
+                        "description": "La ville qui abrite l'évènement",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Recherche d'un évèvement a partir de la ville et la date",
@@ -69,18 +128,33 @@
                 }
             }
         },
-        "/createUser/{nom}/{email}/{password}/{createdAt}": {
+        "/infrastructures/Api/Users/createUser.php": {
             "post": {
-                "operationId": "a204a8e1aa4bc1e2377c89ac79824efc",
-                "parameters": [
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "description": "le de parametre a recuperer",
-                        "required": true,
-                        "schema": {}
-                    }
+                "tags": [
+                    "Utilisateurs"
                 ],
+                "summary": "La création d'un utilisateur",
+                "operationId": "354cafa544f710308b22e7cfe763211b",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "nom": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Création d'un utilisateur avec succès",
@@ -95,9 +169,30 @@
                 }
             }
         },
-        "/loginUser/{email}/{password}": {
-            "get": {
-                "operationId": "f6fd790f867de0952288018fbc410d4c",
+        "/infrastructures/Api/Users/loginUser.php": {
+            "post": {
+                "tags": [
+                    "Utilisateurs"
+                ],
+                "summary": "se connecter avec l'email et mot de passe",
+                "operationId": "82cfbfe1bd6fd201197aac93f6c764fe",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Connexion de l'utilisateurr avec succès",
@@ -198,6 +293,11 @@
                     }
                 },
                 "type": "object"
+            }
+        },
+        "responses": {
+            "404": {
+                "description": "Echec de la creation d'un utilisateur"
             }
         }
     }

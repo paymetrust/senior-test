@@ -25,7 +25,8 @@ class CreateBooking{
   }
 /**
  * @OA\POST(
- *     path="/createBooking/{user}/{event}/{nombreTicket}/{email}",
+ *     path="/createBooking",
+ *    tags={"Réservation"},
  *   @OA\Response(
  *          response="200",
  *        description="Création d'une réservation de ticket",
