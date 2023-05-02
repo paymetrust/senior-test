@@ -1,0 +1,274 @@
+Introduction
+
+Dans le cadre du projet E-ticket  de la Société Paymetrust, 
+
+une API REST a été développée par l’équipe du Centre d’expertise numérique pour la recherche (CEN-R) afin de redistribuer les données contenues dans le dépôt .
+
+L’API RESTFULL développée par le CEN-R propose 5 services :
+
+* Les utilisateurs doivent pouvoir se connecter à l'application en utilisant leur adresse e-mail et leur mot de passe. S'il s'agit d'un nouvel utilisateur.
+il doit pouvoir s'inscrire en fournissant les informations nécessaires telles que le nom, l'adresse e-mail et le mot de passe.
+* Les utilisateurs doivent pouvoir rechercher des événements disponibles en spécifiant la ville et la date de l'événement.
+L'application doit renvoyer une liste d'événements correspondants avec les informations suivantes : nom de l'événement, date, heure, emplacement et prix.
+* Les utilisateurs doivent pouvoir réserver des tickets pour un événement spécifique en fournissant le nombre de tickets et les informations du titulaire de la carte. 
+L'application doit confirmer la réservation et envoyer un e-mail de confirmation au titulaire de la carte.
+Dans la mesure où l’API fait usage du protocole Hypertext Transfer Protocol (HTTP), son fonctionnement n’est pas sans rappeler celui d’un site Web,
+à ceci près que les réponses de l’API sont formulées en JavaScript Object Notation (JSON) plutôt qu’en Hypertext Markup Language (HTML). Comme son nom l’indique, le format JSON est un format de données textuelles dérivé de la notation des objets du langage JavaScript. 
+Comme le XML, le JSON  permet de représenter de l’information structurée.  
+Bien que le XML puisse être plus explicite quant à certains détails, le JSON reste le moyen le plus simple pour un développeur de traiter les données, tant en PHP qu'en JavaScript.
+
+Nous supposons que l'utilisation du JavaScript inclut toujours celle de la bibliothèque jQuery; cette dernière facilitant les appels AJAX nécessaires à l'utilisation des API REST.
+Requêtes et réponses
+
+Le HTTP sépare les envois Web en deux types : les requêtes et les réponses. Le poste client fait une requête HTTP à un serveur, qui lui renvoie une réponse.
+Requêtes (routes)
+
+Voici les trois éléments de la requête utilisés dans le cadre du projet SADVR :
+
+    la méthode
+    l'URI ou la route
+    les variables
+
+La requête possède d'abord une méthode : GET, POST, etc. Dans la mesure où l'API REST offre uniquement un service de lecture de données, nous utiliserons exclusivement la méthode POST, qui spécifie justement la lecture seule. 
+
+Taper une adresse Web dans un navigateur fait justement une requête GET à cette adresse.
+
+La requête possède ensuite un URI (Uniform Resource Identifier) ou route. 
+
+Comme son nom l'indique, elle identifie ce qu'on veut chercher par une adresse unique (ex: recherche d'un evenement 
+
+La requête peut aussi posséder des paramètres, qui dans le cas de la requête GET  sont ajoutés à la suite de l'URI, pour préciser la requête (ex: recherche de d'un événement ) 
+
+Voici le domaine racine (préfixe) 
+
+* avant chaque route pour l'API :  
+
+* Le domaine racine n'est disponible que pour l'environnement de test actuellement. À terme, la documentation sera mise à jour afin que seul le domaine racine de l'environnement de production soit disponible.
+
+Le /etocket/ est inclus dans l'URI afin de permettre une utilisation éventuelle de l'API pour d'autres universités.
+Réponses
+
+Les réponses contiennent principalement deux éléments :
+
+    un code HTTP
+    un contenu
+
+Bien qu'il existe une multitude de codes de réponses HTTP, nous en utiliserons principalement trois :
+
+    200 : OK. La requête est bonne et nous renvoyons une réponse avec contenu
+    404 : Mauvais requête (Bad request). La requête manque des éléments ou fait référence à des éléments inexistants
+  
+Dans le cas d'une réponse 200, le contenu sera toujours un JSON avec les données demandées.
+
+Dans le cas d'une réponse 404 ou 500, le contenu sera le message d'erreur envoyé en JSON.
+
+
+Dans le cadre du projet eticket, il était impératif de disposer d'un identifiant unique et uuid représentant les principales entités du e-ticket. 
+
+L'objectif visé par la mise en place d'un tel identifiant est de pouvoir y référer, sans équivoque, de façon neutre et uniforme.
+
+Par e-ticket, on entend que cet identifiant pourra être "résolu" à perpétuité, soit directement, soit par le biais d'un service de redirection ou d'équivalence. Les entités disposant d'un identifiant dans eticket sont les individus (booking, users, events) et les unités de recherche (ville, date, etc.).
+
+À noter que le l'uuid attribué aux entités, dans les systèmes de Id automatique , a été écarté dans la mesure où il s'agit d'une donnée sensible ne pouvant être exposée publiquement, sans contrôle d'accès.
+Changements par rapport aux versions antérieures
+
+Pour obtenir la liste de principaux travaux effectuées d'une version à l'autre de l'API, voir la page de recension des changements : API REST - Changements par rapport aux versions antérieures.
+
+ 
+Service d'exposition des ressources
+
+Le Service des ressources permet d’exposer l’ensemble des valeurs possibles pour 6 des 7 paramètres proposés par le Service de recherche d’identifiant pérenne.
+Code SAD de toutes les facultés	ressource/faculte	
+
+Events : 
+
+uuid : identifiant de l'entité Events
+	
+name : nom des évènements  de tous les champs events
+
+edate : la date de l'évènement
+
+etime : l'heure de l'évènement
+
+ville : la ville ou se tiendra lévènement
+
+emplacement : l'emplacement de la ville ou se tiendra lévènement
+
+prix : le prix de l'emplacement de la ville ou se tiendra lévènement
+
+dateAte : le prix de l'emplacement de la ville ou se tiendra lévènement
+
+(avertissement) au moins l'un de ces deux paramètres est requis.
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Règles d'affaire de l'exposition de l'expertise de recherche
+
+Il n'est pas possible d'obtenir l'exposition globale de l'expertise, pour toutes les facultés et tous les départements confondus. Il faut préciser une (et une seule) faculté ou un ou des départements. 
+
+On peut préciser que Les utilisateurs doivent pouvoir réserver des tickets pour un événement spécifique en fournissant le nombre de tickets et les informations du titulaire de la carte, 
+
+ 
+Exemples de routes
+
+    https://
+
+Réponses
+Faculté, bonne requête
+
+Réponse avec bonne requête (200 : OK) pour ...... Les informations sont contenus dans l'élément data.
+{"data": [
+]}
+Domaine d'étude, bonne requête
+
+Réponse avec bonne requête (200 : OK) pour ........ Les informations sont contenus dans l'élément data.
+{"data": [
+]}
+Expertise de recherche, bonne requête
+
+Réponse avec bonne requête (200 : OK) pour .............. Les informations sont contenus dans l'élément data.
+{"data": [
+...
+  ]}
+
+ 
+
+Service de recherche d’identifiant(s) utilisateur et connexion)
+Identifiants pérennes de tous les individus	/id/individu	
+
+uuid : identifiant de user de eticket 
+
+nom : nom Users de faculté
+
+email : email de département 
+
+passeword : le mot de passe 
+
+passeword : date de creation du la ligne en base de données
+
+
+
+    uuid
+    user
+    email
+    passeword
+    createdAt
+    
+
+booking
+
+uuid : l'identifiant unique de la table
+
+user : l'utisateur qui souhaite avoir un ticket
+
+events : l'evenement pour participation
+
+Nombre de ticket : le nombre de tcicket
+
+fullName: le nom complet de repcption du ticket
+
+email : le nombre de tcicket
+
+confirmation : la confirmation
+
+    uuid
+    user
+    nombreTicket
+    eticket
+    fullName
+    email
+    confirmation
+
+Exemples de routes
+
+    https://....
+
+Réponses
+Individu, bonne requête
+
+Réponse avec bonne requête (200 : OK) pour uuid/events et uuis/booket. Les informations sont contenus dans l'élément data.
+{"data": [
+]}
+Unité de recherche, bonne requête
+
+Réponse avec bonne requête (200 : OK) pour id/uniterech. Les informations sont contenus dans l'élément data.
+{"data": [
+  {
+]}
+Mauvaise requête (400 : Bad request)
+
+Réponse avec mauvaise requête (400 : Bad request). Les erreurs sont contenues dans l'élément errors, selon le paramètre problématique
+{
+    errors: {
+       
+        ]
+    }
+}
+Erreur serveur interne (500 : Internal server error)
+
+Réponse avec erreur du côté serveur (500 : Internal server error). Le message d'erreur sera dans l'élément errors.
+{
+    errors: "SQLSTATE[42000] [1044] Access denied for user 'usager'@'1.1.1.1/255.255.255.255' to database 'database'"   
+}
+
+
+ 
+Exemples de routes
+
+    https://
+   
+Exemple d'une requête complète correspondant à la recherche par critère illustrée ci-dessous, si l'on voulait obtenir la deuxième page de résultats, avec 10 résultats par page.
+
+Quelques particularités
+
+    Dans les URL de requêtes faites à l'API, le caractère ":" à la suite d'un nom de champ peut être remplacé par "%3A". Les espaces sont quant à eux remplacés par "+".
+    La question des apostrophes : que ce soit à la saisie dans l'interface de recherche ou lors de l'indexation des données dans SOLR, les apostrophes peuvent se présenter sous la forme courbe ou la forme droite. Cela peut causer des problème de repérage lorsque ce qui est saisie et ce qui est indexé ne concordent pas. Pour la Vitrine, nous contôlons cette problématique en remplaçant les apostrophes courbes par des apostrophes droites, tant à l'indexation qu'à la saisie dans l'interface Web.
+    Les opérateurs booléens AND, OR ou NOT doivent être en majuscules.
+
+ 
+Critères et tri
+Booking
+
+
+ChercheurEvenement
+ 
+
+	Secteur de recherche
+Experts
+Critère, par mots	Texte	Pour la recherche simple et option "tous les champs" de la recherche par critère
+Critère, par expression exacte	
+Critère, par expression exacte	
+Critère, par expression exacte	
+Critère, par expression exacte	
+Critère, par expression exacte	
+
+Tests
+
+Pour exécuter les tests inclus dans l'application (et vérifier que tout fonctionne), allez au Terminal, naviguez vers le répertoire racine de l'application et tapez la ligne suivante.
+php vendor/bin/phpunit watcher vendor/bin/phpunit-watcher watch   
+Ressources supplémentaires
+Lecture du format JSON dans un navigateur
+
+Il existe plusieurs extensions de navigateur Web qui permettent de mettre en forme la réponse JSON lors de l'affichage dans un navigateur. Cela en facilite la consultation. 
+
+On retient en particulier JSON Lite pour Firefox (https://addons.mozilla.org/fr/firefox/addon/json-lite/),
+
+Chrome (https://chrome.google.com/webstore/detail/json-lite/) et Opera (https://addons.opera.com/fr/extensions/details/json-lite/).
+
+Paquets (Packages)
+
+Les paquets installés pour tous les environnements sont :
+
+    laravel/framework
+
+    league/fractal
+
+celui utilisé pour le développement seulement sont : 
+
+    phpunit/phpunit
+
+La liste de des utilisateur et le blog pour chaque paquet (notamment pour les failles de sécurité) :
+
+    laravel/framework : https://laravel-news.com (s'ajouter à la liste courriel à partir du site)
+
+    league/fractal : https://github.com/thephpleague/fractal/issues?q=is%3Aopen+is%3Aissue

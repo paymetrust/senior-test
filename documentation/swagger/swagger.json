@@ -1,0 +1,373 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API E-Ticket",
+        "contact": "07 89 91 91 99",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://api-e-ticke.ci",
+            "description": "L'url du serveur ...r"
+        }
+    ],
+    "paths": {
+        "/infrastructures/Api/Booking/confirmBooking.php": {
+            "post": {
+                "tags": [
+                    "Réservation"
+                ],
+                "summary": "La Confirmation d'une réservation",
+                "operationId": "38f739b9898c7f0e4ce93e967f61a8bb",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "uuid": {
+                                        "description": "la référence de la réservation",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Confirmation d'une réservation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Booking"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/infrastructures/Api/Booking/createBooking.php": {
+            "post": {
+                "tags": [
+                    "Réservation"
+                ],
+                "summary": "La création d'une réservation",
+                "operationId": "6c579451e44577fd4c6ba5747ae14eb1",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "user": {
+                                        "type": "string"
+                                    },
+                                    "event": {
+                                        "type": "string"
+                                    },
+                                    "nombreTicket": {
+                                        "type": "integer"
+                                    },
+                                    "fullName": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Création d'une réservation de ticket",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Booking"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/infrastructures/Api/Events/createEvent.php": {
+            "post": {
+                "tags": [
+                    "Evenements"
+                ],
+                "summary": "La création d'un évènement",
+                "operationId": "7257c6b26358364493b53dc9766ecfc6",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "le nom de l'évenement",
+                                        "type": "string"
+                                    },
+                                    "edate": {
+                                        "description": "la date de l'évenement",
+                                        "type": "string"
+                                    },
+                                    "etime": {
+                                        "description": "l'heure de l'évenement",
+                                        "type": "string"
+                                    },
+                                    "ville": {
+                                        "description": "la ville  de l'évenement",
+                                        "type": "string"
+                                    },
+                                    "emplacement": {
+                                        "description": "l'emplacement de l'évenement",
+                                        "type": "string"
+                                    },
+                                    "prix": {
+                                        "description": "le prix de l'évenement",
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Création d'un évènement",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Events"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/infrastructures/Api/Events/searchEvent.php": {
+            "post": {
+                "tags": [
+                    "Evenements"
+                ],
+                "summary": "La recherche d'un évènement",
+                "operationId": "1a824329dd1a12c0d99fab3d6c3dc50a",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "ville": {
+                                        "description": "La ville à rechercher",
+                                        "type": "string"
+                                    },
+                                    "edate": {
+                                        "description": "La date à rechercher",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Recherche d'un évèvement a partir de la ville et la date",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Events"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/infrastructures/Api/Users/createUser.php": {
+            "post": {
+                "tags": [
+                    "Utilisateurs"
+                ],
+                "summary": "La création d'un utilisateur",
+                "operationId": "354cafa544f710308b22e7cfe763211b",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "nom": {
+                                        "description": "le nom de l'utilisateur",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "le mail de l'utilisateur",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "le not de placce ",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Création d'un utilisateur avec succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Users"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/infrastructures/Api/Users/loginUser.php": {
+            "post": {
+                "tags": [
+                    "Utilisateurs"
+                ],
+                "summary": "se connecter avec l'email et mot de passe",
+                "operationId": "82cfbfe1bd6fd201197aac93f6c764fe",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "description": "l'adresse email de l'utilisateur",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "le mot de passe de l'utilisateur",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Connexion de l'utilisateurr avec succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Users"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Booking": {
+                "properties": {
+                    "user": {
+                        "type": "string"
+                    },
+                    "event": {
+                        "type": "string"
+                    },
+                    "nombreTicket": {
+                        "type": "integer"
+                    },
+                    "fullName": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "confirmation": {
+                        "type": "integer"
+                    },
+                    "uuid": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Events": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "edate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "etime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "emplacement": {
+                        "type": "string"
+                    },
+                    "ville": {
+                        "type": "string"
+                    },
+                    "prix": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "uuid": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Users": {
+                "properties": {
+                    "nom": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "uuid": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "responses": {
+            "404": {
+                "description": "Echec de la creation d'un utilisateur"
+            }
+        }
+    }
+}
